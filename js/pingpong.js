@@ -13,3 +13,4 @@ function pingPong(goal) {
   }
   return output;
 }
+exports.calculatorModule = Calculator;
