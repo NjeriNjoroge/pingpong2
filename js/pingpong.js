@@ -8,9 +8,10 @@ function pingPong(goal) {
     } else if (i % 5 === 0) {
       output.push("pong");
     } else {
+      
       output.push(i);
     }
   }
   return output;
 }
-exports.calculatorModule = Calculator;
+exports.calculatorModule = pingPong;
