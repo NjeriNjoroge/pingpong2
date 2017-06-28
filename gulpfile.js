@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var buildProduction = utilities.env.production;
 var del = require('del');
+var lib = require('bower-files')();
 var jshint = require('gulp-jshint');
 
 gulp.task("minifyScripts", ["jsBrowserify"], function(){
@@ -41,6 +42,13 @@ gulp.task("build", function(){
   } else {
     gulp.start('jsBrowserify');
   }
+});
+
+gulp.task('bowerJS', function (){
+  return gulp.src(lib.ext('js').files)
+  .pipe(concat('vendor.min.js'))
+  .pipe(uglify())
+  .pipe(gulp.dest('./build/js'));
 });
 
 gulp.task('jshint', function(){
