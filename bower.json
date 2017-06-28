@@ -1,0 +1,20 @@
+{
+  "name": "pingpong2",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "NjeriNjoroge <wanjorogegrace@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1"
+  }
+}
