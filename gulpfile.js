@@ -20,6 +20,7 @@ var lib = require('bower-files')({
 var browserSync = require('browser-sync').create();
 var jshint = require('gulp-jshint');
 
+
 gulp.task("minifyScripts", ["jsBrowserify"], function(){
   return gulp.src("./build/js/app.js")
     .pipe(uglify())
