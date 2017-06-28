@@ -1,1 +1,46 @@
-!function n(r,o,e){function u(i,p){if(!o[i]){if(!r[i]){var a="function"==typeof require&&require;if(!p&&a)return a(i,!0);if(t)return t(i,!0);var f=new Error("Cannot find module '"+i+"'");throw f.code="MODULE_NOT_FOUND",f}var c=o[i]={exports:{}};r[i][0].call(c.exports,function(n){var o=r[i][1][n];return u(o||n)},c,c.exports,n,r,o,e)}return o[i].exports}for(var t="function"==typeof require&&require,i=0;i<e.length;i++)u(e[i]);return u}({1:[function(n,r,o){o.calculatorModule=function(n){for(var r=[],o=1;o<=n;o++)o%15==0?r.push("ping-pong"):o%3==0?r.push("ping"):o%5==0?r.push("pong"):r.push(o);return r}},{}],2:[function(n,r,o){var e=n("./../js/pingpong.js").calculatorModule;$(document).ready(function(){$("#ping-pong-form").submit(function(n){n.preventDefault();var r=$("#goal").val();e(r).forEach(function(n){$("#solution").append("<li>"+n+"</li>")})})}),$(document).ready(function(){$("#signup").submit(function(n){n.preventDefault();var r=$("#email").val();$("#signup").hide(),$("#solution").prepend("<p>Thank you, "+r+" has been added to our list!</p>")})})},{"./../js/pingpong.js":1}]},{},[2]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+function pingPong(goal) {
+  var output = [];
+  for (var i = 1; i <= goal; i++) {
+    if (i % 15 === 0) {
+      output.push("ping-pong");
+    } else if (i % 3 === 0) {
+      output.push("ping");
+    } else if (i % 5 === 0) {
+      output.push("pong");
+    } else {
+      
+      output.push(i);
+    }
+  }
+  return output;
+}
+exports.calculatorModule = pingPong;
+
+},{}],2:[function(require,module,exports){
+var pingPong = require('./../js/pingpong.js').calculatorModule;
+$(document).ready(function() {
+  $('#ping-pong-form').submit(function(event) {
+    event.preventDefault();
+    var goal = $('#goal').val();
+    var output = pingPong(goal);
+    output.forEach(function(element) {
+      $('#solution').append("<li>" + element + "</li>");
+    });
+  });
+});
+
+$(document).ready(function(){
+  $('#signup').submit(function(event){
+    event.preventDefault();
+    var email = $('#email').val();
+    $('#signup').hide();
+    $('#solution').prepend('<p>Thank you, ' + email + ' has been added to our list!</p>');
+  });
+});
+
+$(document).ready(function(){
+  $('#time').text(moment());
+});
+
+},{"./../js/pingpong.js":1}]},{},[2]);
